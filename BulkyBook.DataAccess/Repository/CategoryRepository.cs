@@ -15,20 +15,14 @@ namespace BulkyBook.DataAccess.Repository
     {
         //private readonly ApplicationDbContext _dbContext;
         private readonly DbSet<Category> __dbSet;
-        public CategoryRepository(/*ApplicationDbContext dbContext,*/DbSet<Category> __dbset): base(/*dbContext,*/ __dbset)
+        public CategoryRepository(DbSet<Category> __dbset): base(/*dbContext,*/ __dbset)
         {
-            //_dbContext = dbContext;
             __dbSet = __dbset;
         }
 
         public void Update(Category category)
         {
-            //var objFromDb = _dbContext.Categories.FirstOrDefault(s => s.Id == category.Id);
             var objFromDb = __dbSet.FirstOrDefault(s => s.Id == category.Id);
-            //var objFromDb = _dbContext.GenericModels.FirstOrDefault(s => s.Id == category.Id);
-            //var tempo = _dbContext.GetCollection<Category>();
-            //var objFromDb = tempo.FirstOrDefault(s => s.Id == category.Id);
-
             if (objFromDb != null)
             {
                 objFromDb.Name = category.Name;

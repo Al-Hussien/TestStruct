@@ -15,8 +15,8 @@ namespace BulkyBook.DataAccess.Repository
         public ExtendedUnitOfWork(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
-            Category = new CategoryRepository(/*_dbContext,*/ _dbContext.Set<Category>());
-            CoverType = new CoverTypeRepository(/*_dbContext,*/ _dbContext.Set<CoverType>());
+            Category = new CategoryRepository( _dbContext.Set<Category>());
+            CoverType = new CoverTypeRepository(_dbContext.Set<CoverType>());
         }
 
         public ICoverTypeRepository CoverType { get; private set; }

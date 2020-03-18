@@ -13,10 +13,9 @@ namespace BulkyBook.DataAccess.Repository
 {
     public class CoverTypeRepository:Repository<CoverType>,ICoverTypeRepository
     {
-        //private readonly ApplicationDbContext _dbContext;
         private readonly DbSet<CoverType> __dbSet;
 
-        public CoverTypeRepository(/*ApplicationDbContext dbContext,*/DbSet<CoverType> __dbset) : base(/*dbContext,*/ __dbset)
+        public CoverTypeRepository(DbSet<CoverType> __dbset) : base(__dbset)
         {
             //_dbContext = dbContext;
             __dbSet = __dbset;
@@ -24,9 +23,7 @@ namespace BulkyBook.DataAccess.Repository
 
         public void Update(CoverType coverType)
         {
-            //var objFromDb = _dbContext.CoverTypes.FirstOrDefault(s => s.Id == coverType.Id);
             var objFromDb = __dbSet.FirstOrDefault(s => s.Id == coverType.Id);
-            //var objFromDb = _dbContext.GenericModels.FirstOrDefault(s => s.Id == coverType.Id);
             if (objFromDb != null)
             {
                 objFromDb.Name = coverType.Name;
