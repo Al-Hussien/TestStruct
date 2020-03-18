@@ -8,9 +8,9 @@ using SQLDbContext.DBContext;
 
 namespace BulkyBook.DataAccess.Data
 {
-    public partial class ApplicationDbContext : SQLContext
+    public partial class ApplicationDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<SQLContext> options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }

@@ -43,7 +43,7 @@ namespace BulkyBook
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<SQLContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<IExtendedUnitOfWork, ExtendedUnitOfWork>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
