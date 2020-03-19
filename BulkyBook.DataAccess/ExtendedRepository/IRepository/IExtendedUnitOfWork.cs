@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BulkyBook.DataAccess.Repository.IRepository
+namespace BulkyBook.DataAccess.ExtendedRepository.IRepository
 {
     public interface IExtendedUnitOfWork : IUnitOfWork
     {

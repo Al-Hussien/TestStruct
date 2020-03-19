@@ -4,7 +4,6 @@ using System.Text;
 using BulkyBook.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using SQLDbContext.DBContext;
 
 namespace BulkyBook.DataAccess.Data
 {

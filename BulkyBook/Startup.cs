@@ -13,11 +13,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BulkyBook.Models;
 using Microsoft.Extensions.Options;
-using SQLDbContext.DBContext;
 using SQLDbContext.Repository;
-using BulkyBook.DataAccess.Repository.IRepository;
-using BulkyBook.DataAccess.Repository;
 using BulkyBook.DataAccess.Data;
+using BulkyBook.DataAccess.ExtendedRepository.IRepository;
+using BulkyBook.DataAccess.ExtendedRepository;
 
 namespace BulkyBook
 {
