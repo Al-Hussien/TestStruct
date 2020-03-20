@@ -29,18 +29,24 @@ namespace BulkyBook
 
         public IConfiguration Configuration { get; }
 
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.Configure<MongoDatabaseSettings>(
-            //    Configuration.GetSection(nameof(MongoDatabaseSettings)));
-            //services.AddSingleton<IMongoDatabaseSettings>(sp =>
-            //    sp.GetRequiredService<IOptions<MongoDatabaseSettings>>().Value);
-            //services.AddScoped<IMongoDbContext, MongoDbContext>();
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            #region DBTypeServiceInjecting
+            //var DBConnectionType = Configuration.GetSection("DataBaseType").GetValue<String>("DBType");
+            //var DBConnectionStringName = Configuration.GetConnectionString("ConnectionUsed")+"Connection";
+            //var connectionString = Configuration.GetConnectionString(DBConnectionStringName);
+            //IConfigurationSection MongoSettings = Configuration.GetSection(nameof(MongoDatabaseSettings));
+            var initDBType = new InitDBType(services, Configuration);
+            IDBConfigyration initiationObject = initDBType.initDBType();
+            initiationObject.AddCustomServices();
+            //IDBConfigyration.AddCustomServices(services, DBConnectionType, connectionString, MongoSettings);
+            #endregion
+
+
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<IExtendedUnitOfWork, ExtendedUnitOfWork>();

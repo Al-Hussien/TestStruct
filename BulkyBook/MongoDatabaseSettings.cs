@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BulkyBook
+namespace BulkyBook.Models
 {
     public class MongoDatabaseSettings : IMongoDatabaseSettings
     {
