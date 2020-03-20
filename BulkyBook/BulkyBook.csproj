@@ -31,9 +31,11 @@
     <Reference Include="Repository">
       <HintPath>lIB\Repository.dll</HintPath>
     </Reference>
-    <Reference Include="SQLDbContext">
-      <HintPath>lIB\SQLDbContext.dll</HintPath>
-    </Reference>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="test\" />
   </ItemGroup>
 
 </Project>

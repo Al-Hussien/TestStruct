@@ -1,8 +1,11 @@
 ﻿using BulkyBook.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Pomelo.EntityFrameworkCore.MySql.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,17 +65,41 @@ namespace BulkyBook
         public void AddCustomServices()
         {
             _services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlServer(_connectionString));
+               options.UseSqlServer(_connectionString, sqlOptions =>
+               {
+                   //sqlOptions.MigrationsAssembly("AssemblyOne");
+               }));
             
         }
     }
     public class MySQLDBConfigyration : BaseDBConfig, IDBConfigyration
     {
         public MySQLDBConfigyration(IServiceCollection services, string connectionString) : base(services, connectionString){}
-        public void AddCustomServices()
+        public void AddCustomServices(/*IConventionSetBuilder temp*/)
         {
-                _services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseMySql(_connectionString));
+
+            //temp.CreateConventionSet()
+            //var conventionSet = SqlServerConventionSetBuilder.Build();
+            //var modelBuilder = new ModelBuilder(conventionSet);
+
+
+
+            _services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseMySql(_connectionString, 
+                        mySqlOptions =>
+                        {
+                            mySqlOptions
+                                //.MigrationsAssembly("Assembly2")
+                                // replace with your Server Version and Type
+                                .ServerVersion(new ServerVersion(new Version(8, 0, 19), ServerType.MySql))
+                                .CharSetBehavior(CharSetBehavior.AppendToAllColumns)
+                                .CharSet(CharSet.Utf8Mb4)
+                                //.CharSet(CharSet.Latin1)
+                                //.AnsiCharSet(CharSet.Latin1)
+                                //.UnicodeCharSet(CharSet.Utf8Mb4)
+                                ;
+                                                         
+                        }).EnableDetailedErrors());
         }
     }
     public class MongoDBConfigyration : BaseDBConfig, IDBConfigyration
