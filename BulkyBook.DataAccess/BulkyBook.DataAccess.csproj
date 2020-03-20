@@ -17,6 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="EFRepository">
+      <HintPath>..\BulkyBook\lIB\EFRepository.dll</HintPath>
+    </Reference>
+    <Reference Include="Repository">
+      <HintPath>..\BulkyBook\lIB\Repository.dll</HintPath>
+    </Reference>
     <Reference Include="SQLDbContext">
       <HintPath>..\BulkyBook\lIB\SQLDbContext.dll</HintPath>
     </Reference>

@@ -1,4 +1,4 @@
-﻿using SQLDbContext.Repository.IRepository;
+﻿using Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;

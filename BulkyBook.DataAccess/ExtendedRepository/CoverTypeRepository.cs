@@ -1,8 +1,8 @@
 ﻿using BulkyBook.DataAccess.Data;
 using BulkyBook.DataAccess.ExtendedRepository.IRepository;
 using BulkyBook.Models;
+using EFRepository.Repository;
 using Microsoft.EntityFrameworkCore;
-using SQLDbContext.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

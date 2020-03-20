@@ -28,6 +28,9 @@
 
 
   <ItemGroup>
+    <Reference Include="Repository">
+      <HintPath>lIB\Repository.dll</HintPath>
+    </Reference>
     <Reference Include="SQLDbContext">
       <HintPath>lIB\SQLDbContext.dll</HintPath>
     </Reference>
