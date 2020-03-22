@@ -24,6 +24,9 @@
     <ProjectReference Include="..\BulkyBook.DataAccess\BulkyBook.DataAccess.csproj" />
     <ProjectReference Include="..\BulkyBook.Models\BulkyBook.Models.csproj" />
     <ProjectReference Include="..\BulkyBook.Utility\BulkyBook.Utility.csproj" />
+    <ProjectReference Include="..\MongoContext\MongoContext.csproj" />
+    <ProjectReference Include="..\MySQLContext\MySQLContext.csproj" />
+    <ProjectReference Include="..\SQLContext\SQLContext.csproj" />
   </ItemGroup>
 
 

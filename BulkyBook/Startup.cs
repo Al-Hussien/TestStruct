@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BulkyBook.Models;
 using Microsoft.Extensions.Options;
-using BulkyBook.DataAccess.Data;
 using BulkyBook.DataAccess.ExtendedRepository.IRepository;
 using BulkyBook.DataAccess.ExtendedRepository;
 
@@ -34,20 +33,12 @@ namespace BulkyBook
         {
 
             #region DBTypeServiceInjecting
-            //var DBConnectionType = Configuration.GetSection("DataBaseType").GetValue<String>("DBType");
-            //var DBConnectionStringName = Configuration.GetConnectionString("ConnectionUsed")+"Connection";
-            //var connectionString = Configuration.GetConnectionString(DBConnectionStringName);
-            //IConfigurationSection MongoSettings = Configuration.GetSection(nameof(MongoDatabaseSettings));
+
             var initDBType = new InitDBType(services, Configuration);
             IDBConfigyration initiationObject = initDBType.initDBType();
             initiationObject.AddCustomServices();
-            //IDBConfigyration.AddCustomServices(services, DBConnectionType, connectionString, MongoSettings);
             #endregion
-
-
-
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+           
             services.AddScoped<IExtendedUnitOfWork, ExtendedUnitOfWork>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();

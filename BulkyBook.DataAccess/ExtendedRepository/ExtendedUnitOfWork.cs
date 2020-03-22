@@ -1,5 +1,4 @@
-﻿using BulkyBook.DataAccess.Data;
-using BulkyBook.DataAccess.ExtendedRepository.IRepository;
+﻿using BulkyBook.DataAccess.ExtendedRepository.IRepository;
 using BulkyBook.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,9 +11,9 @@ namespace BulkyBook.DataAccess.ExtendedRepository
     {
         //if wanted to exclude it from Service Injector
         //private readonly ApplicationDbContext _dbContext = new ApplicationDbContext(((new DbContextOptionsBuilder<ApplicationDbContext>()).UseSqlServer("Server=DESKTOP-CPQGMJJ;Database=BulkyBook;Trusted_Connection=True;MultipleActiveResultSets=true")).Options);
-        private readonly ApplicationDbContext _dbContext ;
+        private readonly DbContext _dbContext ;
 
-        public ExtendedUnitOfWork(ApplicationDbContext dbContext)
+        public ExtendedUnitOfWork(DbContext dbContext)
         {
             _dbContext = dbContext;
             Category = new CategoryRepository( _dbContext.Set<Category>());
