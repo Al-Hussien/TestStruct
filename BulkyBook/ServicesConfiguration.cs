@@ -89,7 +89,6 @@ namespace BulkyBook
             //var conventionSet = SqlServerConventionSetBuilder.Build();
             //var modelBuilder = new ModelBuilder(conventionSet);
             _services.AddScoped<DbContext, MySQLDBContext>();
-
             _services.AddDbContext<MySQLDBContext>(options =>
                     options.UseMySql(_connectionString, 
                         mySqlOptions =>
@@ -102,7 +101,6 @@ namespace BulkyBook
                                 .CharSet(CharSet.Utf8Mb4)
                                 //.CharSet(CharSet.Latin1)
                                 ;
-                                                         
                         }).EnableDetailedErrors());
             _services.AddDefaultIdentity<IdentityUser>()
               .AddEntityFrameworkStores<MySQLDBContext>();
@@ -117,6 +115,8 @@ namespace BulkyBook
             _services.Configure<MongoDatabaseSettings>(_mongoConfig);
             _services.AddSingleton<IMongoDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<MongoDatabaseSettings>>().Value);
+            _services.AddDefaultIdentity<IdentityUser>()
+              .AddEntityFrameworkStores<MongoDBContext>();
             //services.AddScoped<IMongoDbContext, MongoDbContext>();
         }
     }
